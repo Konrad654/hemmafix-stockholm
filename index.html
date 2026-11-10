@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Gör en verktygslista och hitta ställen att låna eller hyra verktyg för ditt projekt i Stockholm.">
+<title>Hemmafix i Stockholm</title>
+<style>
+:root{color-scheme:light;--ink:#162b22;--muted:#506457;--paper:#f7f5ed;--line:#d6ded1;--green:#224634;--lime:#d8ef98}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 system-ui,sans-serif}
+a{color:var(--green);text-underline-offset:.2em}button,input{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid #a85921;outline-offset:3px}
+.wrap{width:min(1080px,calc(100% - 36px));margin:auto}header{background:#fffdf6;border-bottom:1px solid var(--line)}header .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 0}.brand{display:flex;align-items:center;gap:10px;font-weight:800}.mark{display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:var(--green);color:white}.area,.eyebrow{text-transform:uppercase;letter-spacing:.13em;font-size:.73rem;font-weight:800}.area{color:var(--muted)}
+.hero{background:var(--green);color:#fbf9ec;padding:clamp(36px,7vw,80px) 0}.hero .wrap{display:grid;grid-template-columns:1.55fr 1fr;align-items:center;gap:28px}.hero .eyebrow{color:var(--lime)}h1,h2,h3,p{margin:0}h1{font-size:clamp(2.7rem,7.5vw,5.8rem);line-height:.97;letter-spacing:-.075em;margin:.2em 0}.hero p:last-child{max-width:480px;color:#e4eddd;font-size:1.06rem}.hero svg{width:100%;max-height:270px}.section{padding:36px 0}h2{font-size:clamp(1.65rem,4vw,2.4rem);letter-spacing:-.04em;margin:3px 0 14px}.eyebrow{color:#526b56}
+.projects{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0 0 20px;padding:0;border:0}.projects legend{padding:0;margin-bottom:12px}.project{display:block;position:relative;cursor:pointer}.project input{position:absolute;top:15px;right:15px;accent-color:var(--green)}.tile{display:flex;flex-direction:column;gap:5px;min-height:114px;padding:16px 38px 16px 16px;background:white;border:1px solid var(--line);border-radius:15px}.project:has(:checked) .tile{background:#e8f2d4;border-color:var(--green)}.tile small,.hint,.muted{color:var(--muted)}.tile strong{font-size:1.05rem}.panel,.results article{background:#fffdf8;border:1px solid var(--line);border-radius:16px;padding:20px}.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}label{font-weight:650}input[type=checkbox]{accent-color:var(--green);width:1.1rem;height:1.1rem;flex:none}input[type=text]{padding:10px 12px;border:1px solid #819687;border-radius:8px;width:100%;max-width:140px;background:#fff}.field{display:grid;gap:7px}.field .hint{font-size:.85rem}.options{display:grid;gap:7px;margin:14px 0}.options label,.checklist label{display:flex;align-items:center;gap:9px}.primary{background:var(--green);color:#fff;border:0;border-radius:9px;padding:11px 17px;font-weight:750}.checklist{display:grid;gap:7px;margin:12px 0}[hidden]{display:none!important}.results{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px}.results h3{margin-bottom:7px}.results p + p{margin-top:8px}.place{border-top:1px solid var(--line);margin-top:14px;padding-top:12px}.place a{display:inline-block;margin:5px 14px 0 0}.place h4{margin:0 0 4px}.tag{background:#e8f2d4;padding:3px 8px;border-radius:100px;font-size:.75rem;white-space:nowrap}.status{font-weight:750}.materials{padding-left:1.25rem}.error{color:#902e21;font-weight:650}footer{border-top:1px solid var(--line);padding:20px 0;color:var(--muted);font-size:.87rem}
+@media(max-width:640px){.hero .wrap,.results{grid-template-columns:1fr}.hero svg{display:none}.projects{grid-template-columns:1fr;gap:8px}.tile{min-height:0}header .area{display:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><div class="brand"><span class="mark" aria-hidden="true">⌂</span> Hemmafix i Stockholm</div><span class="area">Projektguide · Stockholm</span></div></header>
+<main>
+<section class="hero"><div class="wrap">
+<div><p class="eyebrow">Verktyg för nästa projekt</p><h1>Fixa hemma.<br>Låna lokalt.</h1><p>Välj ett projekt, se vad du behöver och hitta ställen där du kan låna eller hyra verktygen.</p></div>
+<svg viewBox="0 0 370 250" aria-hidden="true"><defs><pattern id="grid" width="22" height="22" patternUnits="userSpaceOnUse"><path d="M22 0H0V22" fill="none" stroke="#9ab69e" stroke-opacity=".27"/></pattern></defs><rect x="5" y="5" width="360" height="240" rx="20" fill="url(#grid)" stroke="#91ac91"/><circle cx="185" cy="125" r="88" fill="#d8ef98"/><g fill="none" stroke="#244734" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><path d="M108 126h154l-16 55H124zM116 127l25-39h88l25 39M137 145h97m-89 17h81m-41-32v49M159 88l17-32 17 32"/><path d="M287 64v33m-16-17h32M81 159v24m-12-12h24" stroke="#f8f9e9" stroke-width="3"/></g></svg>
+</div></section>
+<section class="section wrap" aria-labelledby="planner-title">
+<p class="eyebrow">Din projektplan</p><h2 id="planner-title">Vad vill du fixa?</h2>
+<form id="planner" novalidate>
+<fieldset class="projects" id="projects"><legend class="hint">Välj en projektguide.</legend></fieldset>
+<div class="panel">
+<div class="field"><label for="postal">Postnummer (valfritt)</label><input id="postal" type="text" inputmode="numeric" autocomplete="postal-code" maxlength="6" placeholder="111 57" aria-describedby="postal-help postal-error"><span class="hint" id="postal-help">Används som startpunkt om du öppnar en vägbeskrivning.</span><span class="error" id="postal-error" hidden role="alert"></span></div>
+<div class="options"><label><input type="checkbox" id="lava-ok"> Jag uppfyller Lavas lånevillkor</label><p class="hint">Lava är för 14–25 år, kräver bibliotekskort från Stockholms stadsbibliotek och målsmans underskrift för dig under 18.</p><label><input type="checkbox" id="free-only"> Visa bara gratisalternativ</label></div>
+<button class="primary">Visa min projektplan</button>
+</div>
+</form>
+<div class="results" id="results" hidden>
+<article><p class="eyebrow">01 · Checklista</p><h3 id="result-title" tabindex="-1"></h3><p class="muted">Bocka av verktyg du redan har för att uppdatera stoppförslaget.</p><div class="checklist" id="tools"></div><strong>Material och tillbehör</strong><ul class="materials" id="materials"></ul></article>
+<article><p class="eyebrow">02 · Hitta verktygen</p><h3>Föreslagna stopp</h3><p id="summary" class="status" role="status"></p><div id="stops"></div><p class="muted">Kontrollera tillgänglighet och aktuellt pris hos varje utlånare före besöket.</p></article>
+</div>
+<noscript><p>Aktivera JavaScript för att använda projektplaneraren.</p></noscript>
+</section>
+</main>
+<footer><div class="wrap">Stockholm med omnejd · Ett urval av utlånare · Källor och kartlänkar visas i projektplanen.</div></footer>
+<script>
+const projects = [
+  {id:"planter", title:"Bygg en odlingslåda", note:"Kapa brädor och skruva ihop ramen.", tools:["saw","drill"], materials:["Brädor och hörnreglar","Utomhusskruv och passande bits","Måttband, penna, skyddsglasögon och hörselskydd"]},
+  {id:"shelf", title:"Sätt upp en hylla", note:"För en enkel hylla på en trävägg.", tools:["drill"], materials:["Hyllplan och konsoler","Skruv och bits anpassade till väggen","Måttband, penna och vattenpass"]},
+  {id:"fabric", title:"Laga ett plagg", note:"Sy en söm eller sätt fast en lagningslapp.", tools:["sewing"], materials:["Tråd och nål som passar tyget","Lagningslapp vid behov","Sax och knappnålar"]}
+];
+const labels = {saw:"Såg för trä",drill:"Borrskruvdragare",sewing:"Symaskin"};
+const providers = [
+  {name:"Lava", address:"Kulturhuset, Sergels torg, Stockholm", kind:"Gratis lån", free:true, lava:true, tools:["drill","saw","sewing"], details:"Lånetid två veckor. Ring 08-506 20 180 för att kontrollera om verktyget finns inne.", url:"https://kulturhusetstadsteatern.se/lana-verktyg"},
+  {name:"Reppa · Ringen centrum", address:"Ringvägen 115, Stockholm", kind:"Hyra", free:false, tools:["drill","saw"], details:"Välj verktyg och datum hos Reppa för att se priset. Bokning med BankID.", url:"https://reppa.tools/stockholm/tools"},
+  {name:"Syverkstaden · Skogås bibliotek", address:"Skogås bibliotek, Huddinge", kind:"Gratis på plats", free:true, tools:["sewing"], details:"Symaskin används på biblioteket. Kontrollera bokning och öppettider hos biblioteket.", url:"https://bibliotek.huddinge.se/-/upptack-sy-och-aterbruksstationen"},
+  {name:"Syverkstaden · Flemingsbergs bibliotek", address:"Flemingsbergs bibliotek, Huddinge", kind:"Gratis på plats", free:true, tools:["sewing"], details:"Symaskin används på biblioteket. Kontrollera bokning och öppettider hos biblioteket.", url:"https://bibliotek.huddinge.se/-/upptack-sy-och-aterbruksstationen"}
+];
+const byId = id => document.getElementById(id);
+const form = byId("planner");
+const ownedByProject = new Map();
+let current, postcode = "";
+byId("projects").insertAdjacentHTML("beforeend", projects.map((project,index) =>
+  `<label class="project"><input type="radio" name="project" value="${project.id}" ${index === 0 ? "checked" : ""}><span class="tile"><strong>${project.title}</strong><small>${project.note}</small></span></label>`
+).join(""));
+function scorePlan(needed, options) {
+  let best = {stops:[], missing:[...needed], paid:0};
+  for (let mask = 1; mask < 2 ** options.length; mask++) {
+    const stops = options.filter((_, index) => mask & (1 << index));
+    const missing = needed.filter(tool => !stops.some(place => place.tools.includes(tool)));
+    const paid = stops.filter(place => !place.free).length;
+    if (missing.length < best.missing.length ||
+      (missing.length === best.missing.length && (stops.length < best.stops.length ||
+        (stops.length === best.stops.length && paid < best.paid)))) {
+      best = {stops, missing, paid};
+    }
+  }
+  return best;
+}
+function placeCard(place, needed) {
+  const destination = encodeURIComponent(place.address);
+  const map = postcode
+    ? `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(postcode + " Sverige")}&destination=${destination}`
+    : `https://www.google.com/maps/search/?api=1&query=${destination}`;
+  return `<section class="place"><h4>${place.name} <span class="tag">${place.kind}</span></h4><p>${place.address}</p>
+    <p><strong>${needed.filter(tool => place.tools.includes(tool)).map(tool => labels[tool]).join(", ")}</strong></p>
+    <p class="muted">${place.details}</p><a href="${place.url}" target="_blank" rel="noopener">Utbud och villkor ↗</a>
+    <a href="${map}" target="_blank" rel="noopener">${postcode ? "Vägbeskrivning" : "Visa på karta"} ↗</a></section>`;
+}
+function renderPlan() {
+  const owned = ownedByProject.get(current.id);
+  const needed = current.tools.filter(tool => !owned.has(tool));
+  const options = providers.filter(place => (!place.lava || byId("lava-ok").checked) &&
+    (place.free || !byId("free-only").checked) && place.tools.some(tool => needed.includes(tool)));
+  const plan = scorePlan(needed, options);
+  const count = plan.stops.length;
+  const status = [];
+  if (!needed.length) status.push("Du har alla verktyg för projektet.");
+  if (count) status.push(`${count} stopp täcker ${needed.length - plan.missing.length} av ${needed.length} verktyg.`);
+  if (plan.missing.length) status.push("Saknas i urvalet: " + plan.missing.map(tool => labels[tool]).join(", ") + ".");
+  byId("summary").textContent = status.join(" ");
+  const alternatives = options.filter(place => !plan.stops.includes(place));
+  byId("stops").innerHTML = plan.stops.map(place => placeCard(place,needed)).join("") +
+    (alternatives.length ? `<details class="place"><summary>Fler alternativ (${alternatives.length})</summary>${alternatives.map(place => placeCard(place,needed)).join("")}</details>` : "");
+}
+form.addEventListener("submit", event => {
+  event.preventDefault();
+  const input = byId("postal"), error = byId("postal-error");
+  const value = input.value.trim();
+  if (value && !/^\d{3} ?\d{2}$/.test(value)) {
+    error.textContent = "Ange fem siffror, till exempel 111 57.";
+    error.hidden = false;
+    input.setAttribute("aria-invalid","true");
+    input.focus();
+    return;
+  }
+  error.hidden = true;
+  input.removeAttribute("aria-invalid");
+  postcode = value.replace(/ /g,"").replace(/^(\d{3})(\d{2})$/, "$1 $2");
+  current = projects.find(project => project.id === form.elements.project.value);
+  if (!ownedByProject.has(current.id)) ownedByProject.set(current.id,new Set());
+  const owned = ownedByProject.get(current.id);
+  byId("result-title").textContent = current.title;
+  byId("tools").innerHTML = current.tools.map(tool =>
+    `<label><input type="checkbox" value="${tool}" ${owned.has(tool) ? "checked" : ""}> ${labels[tool]}</label>`).join("");
+  byId("materials").innerHTML = current.materials.map(material => `<li>${material}</li>`).join("");
+  renderPlan();
+  byId("results").hidden = false;
+  byId("result-title").focus();
+});
+byId("tools").addEventListener("change", event => {
+  const owned = ownedByProject.get(current.id);
+  if (event.target.checked) owned.add(event.target.value);
+  else owned.delete(event.target.value);
+  renderPlan();
+});
+</script>
+</body>
+</html>
