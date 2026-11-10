@@ -51,8 +51,8 @@ const labels = {saw:"Såg för trä",drill:"Borrskruvdragare",sewing:"Symaskin"}
 const providers = [
   {name:"Lava", address:"Kulturhuset, Sergels torg, Stockholm", kind:"Gratis lån", free:true, lava:true, tools:["drill","saw","sewing"], details:"Lånetid två veckor. Ring 08-506 20 180 för att kontrollera om verktyget finns inne.", url:"https://kulturhusetstadsteatern.se/lana-verktyg"},
   {name:"Reppa · Ringen centrum", address:"Ringvägen 115, Stockholm", kind:"Hyra", free:false, tools:["drill","saw"], details:"Välj verktyg och datum hos Reppa för att se priset. Bokning med BankID.", url:"https://reppa.tools/stockholm/tools"},
-  {name:"Syverkstaden · Skogås bibliotek", address:"Skogås bibliotek, Huddinge", kind:"Gratis på plats", free:true, tools:["sewing"], details:"Symaskin används på biblioteket. Kontrollera bokning och öppettider hos biblioteket.", url:"https://bibliotek.huddinge.se/-/upptack-sy-och-aterbruksstationen"},
-  {name:"Syverkstaden · Flemingsbergs bibliotek", address:"Flemingsbergs bibliotek, Huddinge", kind:"Gratis på plats", free:true, tools:["sewing"], details:"Symaskin används på biblioteket. Kontrollera bokning och öppettider hos biblioteket.", url:"https://bibliotek.huddinge.se/-/upptack-sy-och-aterbruksstationen"}
+  {name:"Syverkstaden · Skogås bibliotek", address:"Skogås bibliotek, Huddinge", kind:"På plats", free:false, tools:["sewing"], details:"Symaskin används på biblioteket. Kontrollera pris, bokning och öppettider hos biblioteket.", url:"https://bibliotek.huddinge.se/-/upptack-sy-och-aterbruksstationen"},
+  {name:"Syverkstaden · Flemingsbergs bibliotek", address:"Flemingsbergs bibliotek, Huddinge", kind:"På plats", free:false, tools:["sewing"], details:"Symaskin används på biblioteket. Kontrollera pris, bokning och öppettider hos biblioteket.", url:"https://bibliotek.huddinge.se/-/upptack-sy-och-aterbruksstationen"}
 ];
 const byId = id => document.getElementById(id);
 const form = byId("planner");
